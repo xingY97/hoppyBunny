@@ -52,10 +52,19 @@ class GameScene: SKScene {
     
         override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
             /* Called when a touch begins */
+            /* apply vertical impulse */
+            hero.physicsBody?.applyImpulse(CGVector(dx: 0, dy: 300))
         }
     
         override func update(_ currentTime: TimeInterval) {
             /* Called before each frame is rendered */
+            /* Grab current velocity*/
+            let velocityY = hero.physicsBody?.velocity.dy ?? 0
+            
+            /* check and cap vertical velocity */
+            if velocityY > 400 {
+                hero.physicsBody?.velocity.dy = 400
+            }
         }
     }
 }
