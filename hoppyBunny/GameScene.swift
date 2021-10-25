@@ -38,8 +38,16 @@ class GameScene: SKScene {
     
     
     class GameScene: SKScene {
+        //connecting hero node
+        var hero: SKSpriteNode!
+        
         override func didMove(to view: SKView) {
             /* Setup your scene here */
+            /* REcursive node search for 'hero' */
+            hero = (self.childNode(withName: "//hero") as! SKSpriteNode)
+            
+            /* allows the hero to animate when it's in the gameScene*/
+            hero.isPaused = false
         }
     
         override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
